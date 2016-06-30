@@ -27,3 +27,11 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+#config guardian, JWT login
+config :guardian, Guardian,
+  issuer: "StandardElixirReact",
+  ttl: { 3, :days },
+  verify_issuer: true,
+  secret_key: "12313dsadfk",
+  serializer: StandardElixirReact.GuardianSerializer

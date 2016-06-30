@@ -38,8 +38,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :standard_elixir_react, StandardElixirReact.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "standard_elixir_react_dev",
+  username: "cuongta",
+  password: "admin",
+  database: "elixir_react_dev",
   hostname: "localhost",
   pool_size: 10
