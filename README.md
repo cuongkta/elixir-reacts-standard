@@ -1,4 +1,4 @@
-# StandardElixirReact
+# Standard Elixir React 
 Stack: Elixir, ReactJS, Webpack
 To start your Phoenix app:
 
