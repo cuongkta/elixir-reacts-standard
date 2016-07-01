@@ -1,3 +1,4 @@
+# require IEx
 defmodule StandardElixirReact.RegistrationController  do
   use StandardElixirReact.Web, :controller
 
@@ -10,8 +11,8 @@ defmodule StandardElixirReact.RegistrationController  do
 
     case Repo.insert(changeset) do
       {:ok, user} ->
-        {:ok, jwt, _full_claims} = Guardian.encode_and_sign(user, :token)
-
+        {:ok, jwt, _full_claims} = user |> Guardian.encode_and_sign(:token)
+        #IEx.pry
         conn
         |> put_status(:created)
         |> render(StandardElixirReact.SessionView, "show.json", jwt: jwt, user: user)
@@ -19,7 +20,7 @@ defmodule StandardElixirReact.RegistrationController  do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(StandardElixirReact.RegistrationView, "error.json", changeset: changeset)
+        |> render("error.json", changeset: changeset)
     end
   end
 end

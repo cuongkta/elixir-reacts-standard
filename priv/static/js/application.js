@@ -28631,7 +28631,7 @@
 /* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
+	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
 	 * @overview es6-promise - a tiny implementation of Promises/A+.
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license
@@ -29649,6 +29649,7 @@
 	Actions.signUp = function (data) {
 	  return function (dispatch) {
 	    (0, _utils.httpPost)('/api/v1/registrations', { user: data }).then(function (data) {
+	      console.log(data);
 	      localStorage.setItem('phoenixAuthToken', data.jwt);
 
 	      (0, _sessions.setCurrentUser)(dispatch, data.user);
@@ -29698,6 +29699,7 @@
 	    }
 	  });
 
+	  console.log(user);
 	  socket.connect();
 
 	  var channel = socket.channel('users:' + user.id);
@@ -29713,12 +29715,12 @@
 	    });
 	  }
 
-	  channel.on('boards:add', function (msg) {
+	  /*channel.on('boards:add', (msg) => {
 	    dispatch({
-	      type: _constants2.default.BOARDS_ADDED,
-	      board: msg.board
-	    });
-	  });
+	        type: Constants.BOARDS_ADDED,
+	        board: msg.board,
+	      });
+	  });*/
 	};
 
 	var Actions = {
@@ -30901,29 +30903,17 @@
 	          ),
 	          _react2.default.createElement(
 	            'form',
-	            { id: 'sign_in_form', onSubmit: this._handleSubmit.bind(this) },
+	            { onSubmit: this._handleSubmit.bind(this) },
 	            this._renderError.call(this),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'field' },
-	              _react2.default.createElement('input', {
-	                ref: 'email',
-	                type: 'Email',
-	                id: 'user_email',
-	                placeholder: 'Email',
-	                required: 'true',
-	                defaultValue: 'john@phoenix-trello.com' })
+	              _react2.default.createElement('input', { ref: 'email', type: 'Email', placeholder: 'Email', required: 'true', defaultValue: 'john@phoenix-trello.com' })
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'field' },
-	              _react2.default.createElement('input', {
-	                ref: 'password',
-	                type: 'password',
-	                id: 'user_password',
-	                placeholder: 'Password',
-	                required: 'true',
-	                defaultValue: '12345678' })
+	              _react2.default.createElement('input', { ref: 'password', type: 'password', placeholder: 'Password', required: 'true', defaultValue: '12345678' })
 	            ),
 	            _react2.default.createElement(
 	              'button',

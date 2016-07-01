@@ -9,6 +9,7 @@ Actions.signUp = (data) => {
   return dispatch => {
     httpPost('/api/v1/registrations', { user: data })
     .then((data) => {
+      console.log(data);
       localStorage.setItem('phoenixAuthToken', data.jwt);
 
       setCurrentUser(dispatch, data.user);

@@ -1,7 +1,7 @@
 defmodule StandardElixirReact.User do
   use StandardElixirReact.Web, :model
-  use Ecto.Schema 
-  import Ecto.Changeset
+  # use Ecto.Schema 
+  # import Ecto.Changeset
 
   schema "users" do
     field :first_name, :string
@@ -42,4 +42,18 @@ defmodule StandardElixirReact.User do
         current_changeset
     end
   end
+
+defimpl Poison.Encoder, for: Any do
+  def encode(%{__struct__: _} = struct, options) do
+    map = struct
+          |> Map.from_struct
+          |> sanitize_map
+    Poison.Encoder.Map.encode(map, options)
+  end
+
+  defp sanitize_map(map) do
+    Map.drop(map, [:__meta__, :__struct__])
+  end
+end
+  
 end

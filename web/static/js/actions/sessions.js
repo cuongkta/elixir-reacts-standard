@@ -9,6 +9,7 @@ export function setCurrentUser(dispatch, user) {
     logger: (kind, msg, data) => { console.log(`${kind}: ${msg}`, data); },
   });
 
+  console.log(user);
   socket.connect();
 
   const channel = socket.channel(`users:${user.id}`);
@@ -24,12 +25,12 @@ export function setCurrentUser(dispatch, user) {
     });
   }
 
-  channel.on('boards:add', (msg) => {
+  /*channel.on('boards:add', (msg) => {
     dispatch({
         type: Constants.BOARDS_ADDED,
         board: msg.board,
       });
-  });
+  });*/
 };
 
 const Actions = {
