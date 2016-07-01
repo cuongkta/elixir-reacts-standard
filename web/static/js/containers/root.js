@@ -2,27 +2,27 @@ import React, { PropTypes }         from 'react';
 import { Provider }                 from 'react-redux';
 import { Router, RoutingContext }   from 'react-router';
 import invariant                    from 'invariant';
-import configRoutes                 from '../routes';
+import routes                       from '../routes';
 
-const propTypes = {
-  routerHistory: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired
-};
+export default class Root extends React.Component {
+  _renderRouter() {
+    invariant(
+      this.props.routerHistory,
+      '<Root /> needs either a routingContext or routerHistory to render.'
+    );
 
-const Root = ({ routerHistory, store }) => {
-  invariant(
-    routerHistory,
-    '<Root /> needs either a routingContext or routerHistory to render.'
-  );
-
-  return (
-    <Provider store={store}>
-      <Router history={routerHistory}>
-        {configRoutes(store)}
+    return (
+      <Router history={this.props.routerHistory}>
+        {routes}
       </Router>
-    </Provider>
-  );
-};
+    );
+  }
 
-Root.propTypes = propTypes;
-export default Root;
+  render() {
+    return (
+      <Provider store={this.props.store}>
+        {this._renderRouter()}
+      </Provider>
+    );
+  }
+}

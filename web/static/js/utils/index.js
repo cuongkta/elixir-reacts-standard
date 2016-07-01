@@ -59,7 +59,7 @@ export function httpDelete(url) {
 }
 
 export function setDocumentTitle(title) {
-  document.title = `${title} | Phoenix Trello`;
+  document.title = `${title} | Standard Elixir Reactjs`;
 }
 
 export function renderErrorsFor(errors, ref) {
