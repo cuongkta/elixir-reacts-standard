@@ -1,6 +1,7 @@
 defmodule StandardElixirReact.UserSocket do
   use Phoenix.Socket
   alias StandardElixirReact.{Repo, User}
+  alias StandardElixirReact.{GuardianSerializer}
   ## Channels
   # channel "rooms:*", StandardElixirReact.RoomChannel
   channel "users:*", StandardElixirReact.UserChannel
