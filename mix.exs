@@ -19,7 +19,7 @@ defmodule StandardElixirReact.Mixfile do
   def application do
     [mod: {StandardElixirReact, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex,:comeonin]]
+                    :phoenix_ecto, :postgrex,:comeonin,:ex_machina]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,11 @@ defmodule StandardElixirReact.Mixfile do
      {:gettext, "~> 0.9"},
      {:comeonin, "~> 2.0"},
      {:guardian, "~> 0.9.0"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:ex_machina, "~> 0.6.1"},
+     {:exactor, "~> 2.2.0"},
+     {:hound, "~> 0.8"}
+    ]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
