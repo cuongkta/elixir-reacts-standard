@@ -3,6 +3,8 @@ Stack: Elixir, ReactJS, Webpack
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
+  * Ensure webpack is installed. ie: `npm install -g webpack`
+  * Install npm packages with `npm install`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Start Phoenix endpoint with `mix phoenix.server`
 
